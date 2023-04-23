@@ -2,6 +2,8 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
 const { signToken } = require('../utils/auth');
 
+//this is where you tqlk to your database through your models (you need the resolvers and the type defs to match by name and be 1:1) It also has to be in the same category (AKA query to query, mutation to mutation)
+
 const resolvers = {
   Query: {
     //grabbing the user that is logged in
@@ -37,7 +39,7 @@ const resolvers = {
 
       return { token, user };
     },
-    saveBook: async (parent, args, context) => {
+    addBook: async (parent, args, context) => {
       try {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
