@@ -1,15 +1,19 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
-
+const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
+  // like routes with more structure
   typeDefs,
+  // resolvers is like controllers
   resolvers,
+  // This is similar to req.session ; makes a global variable to check if the user is logged in and you can grab the username, etc.
+  context: authMiddleware,
 });
 
 app.use(express.urlencoded({ extended: false }));
