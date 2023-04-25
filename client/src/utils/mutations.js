@@ -25,8 +25,8 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_BOOK = gql`
-mutation AddBook($description: String!, $bookId: String!, $title: String!, $link: String, $image: String, $authors: [String]) {
-  addBook(description: $description, bookID: $bookId, title: $title, link: $link, image: $image, authors: $authors) {
+mutation AddBook($description: String!, $bookID: String!, $title: String!, $link: String, $image: String, $authors: [String]) {
+  addBook(description: $description, bookID: $bookID, title: $title, link: $link, image: $image, authors: $authors) {
     _id
     email
     bookCount
@@ -36,8 +36,8 @@ mutation AddBook($description: String!, $bookId: String!, $title: String!, $link
 `;
 
 export const REMOVE_BOOK = gql`
-mutation RemoveBook($bookId: String!) {
-  removeBook(bookID: $bookId) {
+mutation RemoveBook($bookID: String!) {
+  removeBook(bookID: $bookID) {
     _id
     bookCount
     email
